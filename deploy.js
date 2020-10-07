@@ -3,7 +3,7 @@ const exec = require('@actions/exec');
 
 let deploy = function (params) {
   return new Promise((resolve, reject) => {
-    const { folder, bucket, bucketRegion, distId, invalidation, deleteRemoved } = params;
+    const { folder, bucket, bucketRegion, invalidation, deleteRemoved } = params;
 
     const deleteRemovedArg = deleteRemoved ? `--deleteRemoved ${deleteRemoved}` : '';
 
@@ -12,7 +12,6 @@ let deploy = function (params) {
                         --bucket ${bucket} \
                         --region ${bucketRegion} \
                         --cwd . \
-                        --distId ${distId} \
                         --etag \
                         --gzip xml,html,htm,js,css,ttf,otf,svg,txt \
                         --invalidate "${invalidation}" \
